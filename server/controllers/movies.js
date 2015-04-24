@@ -1,5 +1,3 @@
-// make an immediate function that gives back an object that has methods that handle our requests and responses
-// require mongoose so that we can access the model
 var mongoose = require('mongoose');
 var Movie = mongoose.model('movie');
 var request = require('request');
