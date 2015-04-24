@@ -1,0 +1,10 @@
+<div ng-controller='movies_controller' class='container'>
+	<div class='col-md-2 col-sm-3 col-xs-6 movie_results' ng-repeat='movie in search_movies.results'>
+		<a ng-href='#/movie/{{movie.id}}' ng-click='find_movie(movie)'>
+			<div class='poster'>
+				<img ng-src='https://image.tmdb.org/t/p/w92{{movie.poster_path}}' alt='no image found'>
+			</div>
+			<p>{{movie.original_title | limitTo:15}}{{movie.original_title.length>20? '...':''}}</p>
+		</a>
+	</div>
+</div>

@@ -2,16 +2,51 @@
 <html>
 <head>
 	<title>Movies_app</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
 	<script type="text/javascript" src="angular/app.js"></script>
 	<script type="text/javascript" src="angular/controllers/movies-controller.js"></script>
 	<script type="text/javascript" src="angular/factories/movies-factory.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="static/styles.css">
 </head>
 
 <body>
 	<div ng-app='movies_app'>
+		<div ng-controller='movies_controller'>
+			<div id='menu' class='header'>
+				<nav class="navbar navbar-inverse">
+				  <div class="container-fluid">
+				    <div class="navbar-header">
+				    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>                        
+				      </button>
+			   			
+				      <a class="navbar-brand" href="#/">
+				      	<h3>Movie Review</h3>
+				      </a>
+				    </div>
+				    <div class="collapse navbar-collapse" id="myNavbar">
+					    <div class="col-md-6 col-md-offset-2">
+					        <form ng-submit='search_for_movie()'>
+						        <div class="input-group">
+							          <input type="text" class="form-control" ng-model='search_movie.movie' placeholder="Enter movie here">
+							          <span class="input-group-btn">
+						            	<button class="btn btn-default" type="button">Search</button>
+						          	</span>
+						        </div><!-- /input-group -->
+					        </form>
+					      </div><!-- /.col-lg-6 -->
+					  </div>
+				  </div>
+				</nav>
+			</div>
+		</div>
 		<div ng-view=''>
 		</div>
 	</div>	

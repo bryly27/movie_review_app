@@ -11,7 +11,7 @@ var app = express();
 
 // so that we can parse post data through the req.body
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // allows us to use put, patch, and delete http verbs

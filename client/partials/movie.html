@@ -1,0 +1,43 @@
+<div class='container' ng-controller='movies_controller'>
+
+	<div class='row movie_profile'>
+		<div class='col-md-2'>
+			<div class='poster'>
+				<img ng-src='https://image.tmdb.org/t/p/w92{{movie_profile.poster_path}}' alt='no image found'>
+			</div>
+		</div>
+
+		<div class='col-md-8'>
+			<h1>{{movie_profile.original_title}}</h1>
+			<p>{{movie_profile.overview}}</p>
+			<p>Release Date: {{movie_profile.release_date | date: 'MMMM yyyy'}}</p>
+		</div>
+	</div>
+
+	<h1>Reviews</h1>
+	<div class='row reviews' ng-if='movie_profile._result !== null' ng-repeat='review in movie_profile._result.reviews'>
+		<div class='col-md-6'>
+			<h5>{{review.review}}</h5>
+			<p>-{{review.name}}</p>
+			<p>recommend: {{review.recommend}}</p>
+		</div>
+	</div>
+	<div ng-if='movie_profile._result === null'>
+		<h5>Be the first to write a review</h5>
+	</div>
+
+	<div class='row'>
+		<div class='col-md-8 write_review'>
+			<h1>Write a review</h1>
+			<form ng-submit='submit_review(new_review)'>
+				<textarea ng-model='new_review.review' placeholder='write a review here' required></textarea>
+				<input type='text' ng-model='new_review.name' placeholder='enter your name' required>
+				<span>Like: </span><input type='radio' name='like' value='like' ng-model='new_review.like'>
+				<span>Dislike: </span><input type='radio' name='like' value='dislike' ng-model='new_review.like'>
+				<input class='submit_review_button 'type='submit' value='Submit'>
+			</form>
+		</div>
+	</div>
+
+
+</div>

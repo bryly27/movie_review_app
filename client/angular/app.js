@@ -6,12 +6,12 @@ movies_app.config(function($routeProvider){
 		.when('/', {
 			templateUrl: 'partials/main.html',
 		})
-		// .when('/dashboard/:id',{
-		// 	templateUrl: '../partials/dashboard.html',
-		// })
-		// .when('/profile/:id',{
-		// 	templateUrl: 'partials/profile.html',
-		// })
+		.when('/movie/:id',{
+			templateUrl: '../partials/movie.html',
+		})
+		.when('/search/:search_for_movie',{
+			templateUrl: 'partials/search.html',
+		})
 		// .when('/user/:id',{
 		// 	templateUrl: 'partials/user.html',
 		// })

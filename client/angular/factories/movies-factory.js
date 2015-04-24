@@ -2,41 +2,40 @@
 movies_app.factory('movies_factory', function($http) {
 	var factory= {};
 
-	factory.find_movie = function(movie, callback){
-		// console.log(movie);
-		// $http.post('/movies/find_movie', movie).success(function(){
 
-		// });
-		$http({
-			method: 'get',
-			// url: 'http://www.imdbapi.com/?t='+movie.movie,
-			// url: 'http://www.imdb.com/xml/find?q=' + movie.movie,
-			url: 'http://www.omdbapi.com/?s=' + movie.movie,
-		}).success(function(response){
-			console.log(response);
-			if(response.Error){
-				callback({error: 'No movies found'});
-			}else{
-				for(var i=0; i<response.Search.length-1; i++){
-					var counter = 0;
-					$http({
-						method: 'get',
-						url: 'http://www.omdbapi.com/?i=' +response.Search[i].imdbID 
-					}).success(function(movie){
-						console.log(counter);
-						counter ++;
-						
-						response.Search[counter].Poster = movie.Poster;
-						console.log(response.Search[counter]);
-					})
-				}
-				
-			}
+	factory.popular_movies = function(callback){
+		$http.get('/popular_movies').success(function(output){
+			callback(output);
+		})
+	}
+
+	factory.find_movie = function(id, callback){
+		var movie = {id:id};
+		$http.post('/find_movie', movie).success(function(output){
+			callback(output);
+		})
+	}
+
+	factory.search_for_movie = function(search, callback){
+		var movie = {movie:search};
+		$http.post('/search_for_movie', movie).success(function(output){
+			callback(output);
+		})
+	}
+
+	factory.submit_review = function(review, callback){
+		$http.post('/submit_review', review).success(function(output){
+			callback(output);
+		})
+	}
+
+	// factory.recently_reviewed = function(callback){
+	// 	$http.get('/recently_reviewed').success(function(output){
+	// 		callback(output);
+	// 	})
+	// }
 
 
-
-		});
-	};
 
 	return factory;
 })
