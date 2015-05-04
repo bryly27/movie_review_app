@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Movie = mongoose.model('movie');
 var request = require('request');
-var MovieDB = require('moviedb')();
+var MovieDB = require('moviedb')('8f753b5bfad76594133bfd150451cf88');
 
 module.exports = (function() {
 	// return because we want to put an object into the variable for whatever requires this
